@@ -1,0 +1,18 @@
+Package: marathonR
+Type: Package
+Title: R Interface to the 'marathon' Library
+Version: 0.0.1
+Date: 2018-03-18
+Maintainer: Hjalmar Boulouednine <hjalmar@b-nine.de>
+Author: Steffen Rechner, Hjalmar Boulouednine
+Description: This packages provides methods for the uniform sampling of binary matrices with restricted row and column sums.
+  For this purpose, the package provides two functions for the uniform sampling of 
+    a) binary matrices with prescribed row and column sums.
+    b) binary matrices whose row and column sums are restricted by lower and upper bounds.
+License: MIT + file LICENSE
+Imports: methods, Rcpp
+LinkingTo: Rcpp, BH
+SystemRequirements: gmp
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1

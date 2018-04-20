@@ -1,0 +1,5 @@
+# Makevars.win
+
+PKG_CPPFLAGS = -I../inst
+PKG_LIBS = -lgmp
+PKG_CXXFLAGS = -std=c++14

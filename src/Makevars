@@ -1,0 +1,4 @@
+# Makevars
+
+PKG_CPPFLAGS = -I../inst $(SHLIB_OPENMP_CXXFLAGS)
+PKG_CXXFLAGS = -std=c++14

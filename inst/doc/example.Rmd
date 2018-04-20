@@ -1,0 +1,15 @@
+---
+title: "marathonR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Put the title of your vignette here}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+# First Headline
+Some Text...
+
+```{r codeBlockName}
+x <- 1
+y <- x + 1
+```

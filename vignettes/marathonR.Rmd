@@ -1,0 +1,57 @@
+---
+title: "marathonR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{marathonR}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+# marathonR
+
+This packages provides methods for the uniform sampling of binary matrices with restricted row and column sums.
+In particular, the package provides two functions for the uniform sampling of 
+  a) binary matrices with fixed row and column sums.
+  b) binary matrices whose row and column sums are restricted by lower and upper bounds.
+
+## Fixed Margins
+
+The function 'marathonR::SampleFixed' is designed to produce uniformly distributed binary matrices with prescribed row and column sums.
+For example, the following function will produce ten random binary matrices with the specified set of row and column sums.
+
+```{r sampleFixed}
+rowsum <- c(2,2,1)
+colsum <- c(1,1,1,1,1)
+SampleFixed(rowsum, colsum, 10)
+```
+
+This code snippet will create independent and perfectly uniformly distributed random samples.
+However, the running time of this method may grow unpleasently large when the dimension of the matrix grows. 
+In such cases, we may use a different sampling method by specifying the `method` parameter and defining an associated number of `steps`.
+
+```{r sampleFixed2}
+SampleFixed(rowsum, colsum, 10, method="curveball", steps=100)
+```
+
+In this case, 100 steps of the Curveball algorithm is used to produce random samples.
+
+## Margins in Intervals
+
+In some situations, we may want to let the row and columns sums of a binary matrix vary in prescribed intervals.
+For this purpose, the function `marathonR::SampleInterval` is designed to draw `N` independent samples from the set of binary matrices whose row and column sums lie in prescribed intervals.
+For example, we might be interestend in random binary matrices whose row and column sums are allowed to exceed to ones defined above by one.
+Then, we might call.
+
+```{r sampleInterval}
+rowsum.lower <- c(2,2,1)
+rowsum.upper <- c(3,3,2)
+colsum.lower <- c(1,1,1,1,1)
+colsum.upper <- c(2,2,2,2,2)
+SampleInterval(rowsum.lower, rowsum.upper, colsum.lower, colsum.upper, 10)
+```
+
+While this code snippet will create perfectly random samples, its running time may be unpleasently large when the sizes of the intervals are large.
+In such cases, we may select a different sampling method, and manually provide the number of steps used to produce random samples. 
+
+```{r sampleInterval2}
+SampleInterval(rowsum.lower, rowsum.upper, colsum.lower, colsum.upper, 10, method="simple", steps=100)
+```
